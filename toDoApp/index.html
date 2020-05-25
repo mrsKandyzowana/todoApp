@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="title">Lista osobista</h1>
+    <form action="">
+        <input type="text" id="user-todo" placeholder="Nowy pomysł?" required>
+    </form>
+    <h2 id="todo-header">Plany, projekty, fanaberie</h2>
+    <ul></ul>
+    <button id="clear">Wykreśl wszystko</button>
+    <script>
+        var form = document.querySelector('form');
+        var todoList = document.querySelector('ul');
+        var button = document.querySelector('button');
+        var input = document.getElementById('user-todo');
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            todoMaker(input.value);
+            input.value = '';
+        });
+        var todoMaker = function(text){
+            var todo = document.createElement('li');
+            todo.textContent = text;
+            todoList.appendChild(todo);
+
+        };
+        button.addEventListener("click", function(e){
+            while (todoList.firstChild){
+                todoList.removeChild(todoList.firstChild);
+            }
+        })
+        
+
+    </script>
+</body>
+</html>
